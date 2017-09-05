@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>CSS2 Line height test: explicit sizing</title>
+<link rel="author" title="Florian Rivoal" href="https://florian.rivoal.net">
+<link rel="help" href="https://drafts.csswg.org/css2/visudet.html#line-height">
+<meta name="flags" content="">
+<meta name="assert" content="This ought to expose the same thing as line-height-006.html,
+                             except that firefox is buggy and does different things in situations where it ought to do the same,
+                             and that reloading the page gives different results.">
+<style>
+@font-face {
+  font-family: 'high-a-only';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Revalia-Regular'), url(https://fonts.gstatic.com/s/revalia/v4/v14gd0xHFDeaJlDrYVqmHQLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+  unicode-range: U+0061;
+}
+@font-face {
+  font-family: 'deep-b-only';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Architects Daughter'), local('ArchitectsDaughter'), url(https://fonts.gstatic.com/s/architectsdaughter/v6/RXTgOOQ9AAtaVOHxx0IUBLX-17DZ7sxHqV95SKqxd6w.woff) format('woff');
+  unicode-range: U+0062;
+}
+
+div {
+  position: absolute;
+  line-height: normal;
+  font-size: 100px;
+  color: transparent;
+  border: solid black 1px;
+  width: 100px;
+}
+
+.h { font-family: high-a-only; }
+.d { font-family: deep-b-only; }
+.hd { font-family: high-a-only, deep-b-only; }
+.dh { font-family: deep-b-only, high-a-only; }
+.shift { margin-left: 200px; }
+</style>
+
+<p>Test for a firefox specific bug: Reloading the page repeatedly will reveal several different behaviors. Probabilities differ. Whether the dev-tools are open or not makes a difference as to which behavior is observable and with which probability. I think I have seen 4 or 5 different ones. Also, look at the source; things that should not matter do.
+
+<div class="hd"> b</div> <!-- This space is collapsed, and should not affect layout. Sometimes (try reloading) it does. -->
+<div class="hd">b</div>
+<div class="d">b</div>
+
+<!-- same thing, shifted. The mere presence of the shift class seems to make a difference, even when it is not styled. -->
+<div class="hd shift"> b</div>
+<div class="hd shift">b</div>
+<div class="d shift">b</div>
+
+ <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> 
+
+<!-- same thing, swapping which font is primary and secondary.
+These are stable, no matter how many reloads.
+
+If you detele the divs below, the layout of the divs above stops being unstable (!)
+
+If you swap the divs bellow the <br>s with those above, it's the ones above that are unstable,
+even though they used to be stable when they were bellow the <br>s (!)
+-->
+
+<div class="dh"> a</div>
+<div class="dh">a</div>
+<div class="h">a</div>
+
+<!-- same thing, shifted, which here has not effect, somehow -->
+<div class="dh shift"> a</div>
+<div class="dh shift">a</div>
+<div class="h shift">a</div>
