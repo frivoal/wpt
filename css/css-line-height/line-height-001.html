@@ -3,6 +3,7 @@
 <title>CSS2 Line height test: explicit sizing</title>
 <link rel="author" title="Florian Rivoal" href="https://florian.rivoal.net">
 <link rel="help" href="https://drafts.csswg.org/css2/visudet.html#line-height">
+<link rel="match" href="reference/line-height-001-ref.html">
 <meta name="flags" content="">
 <meta name="assert" content="non-normal values of line-height result in the height of the inline-level box to be exactly the specified dimention,
                              even when fallback fonts with metrics different from the primary one are used.">
@@ -46,7 +47,7 @@ div:not(#red) {
 }
 </style>
 
-<p>There should be a <strong>green square</strong> and <strong>no red</strong>.
+<p>Test passes if there is a <strong>green square</strong> and <strong>no red</strong> below.
 
 <div id=red></div>
 

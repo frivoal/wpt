@@ -3,6 +3,7 @@
 <title>CSS2 Line height test: baseline position with explicit sizing</title>
 <link rel="author" title="Florian Rivoal" href="https://florian.rivoal.net">
 <link rel="help" href="https://drafts.csswg.org/css2/visudet.html#line-height">
+<link rel="mismatch" href="reference/line-height-003-ref.html">
 <meta name="flags" content="">
 <meta name="assert" content="The position of the baseline in an inline-level box whose height is determined by a non-normal value of line-height
                              does depend on the primary font.">
@@ -45,7 +46,7 @@ span { /* visible thing aligned to the baseline, and small enough to not influen
 
 </style>
 
-<p>There should be a small green rectangle.
+<p>Test passes if there is a small green rectangle or square below.
 
 <div id=d>aa<span></span></div>
 <div id=h>aa<span></span></div>

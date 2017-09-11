@@ -3,6 +3,7 @@
 <title>CSS2 Line height test: normal sizing</title>
 <link rel="author" title="Florian Rivoal" href="https://florian.rivoal.net">
 <link rel="help" href="https://drafts.csswg.org/css2/visudet.html#line-height">
+<link rel="match" href="reference/line-height-002-ref.html">
 <meta name="flags" content="">
 <meta name="assert" content="The height of an inline-level box whose line-height is normal and uses both primary and fallback fonts
                              is the same as the union of
@@ -33,20 +34,20 @@ div {
 .h { font-family: high-a-only; }
 .d { font-family: deep-b-only; }
 .hd { font-family: high-a-only, deep-b-only; }
-.green { background: green; }
+.white { background: white; }
 .red { background: red; }
 .shift { margin-left: 300px; }
 </style>
 
-<p>There should be <strong>two green boxes</strong> and <strong>no red</strong>.
+<p>Test passes if there is <strong>no red</strong> below.
 
 <!-- Check if the hd div is larger-->
 
 <div class="hd red">ab</div>
-<div class=green><span class=h>a</span><span class=d>b</span></div>
+<div class=white><span class=h>a</span><span class=d>b</span></div>
 
 <!-- Same thing, reversed, to check if the hd dix is smaller -->
 
 <div class="red shift"><span class=h>a</span><span class=d>b</span></div>
-<div class="hd green shift">ab</div>
+<div class="hd white shift">ab</div>
 
